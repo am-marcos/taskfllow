@@ -1,0 +1,25 @@
+{
+  "name": "taskflow-client",
+  "version": "1.0.0",
+  "description": "TaskFlow client — TP M2 Serverless (Supabase + Azure Functions)",
+  "type": "module",
+  "main": "client.js",
+  "scripts": {
+    "test:rls": "node test-rls.js",
+    "phase3:alice": "node alice-watch.js",
+    "phase3:bob": "node bob-actions.js"
+  },
+  "keywords": [
+    "supabase",
+    "taskflow",
+    "m2"
+  ],
+  "author": "Marcos",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "dotenv": "^16.4.5",
+    "mime-types": "^3.0.2",
+    "uploadthing": "^7.7.4"
+  }
+}

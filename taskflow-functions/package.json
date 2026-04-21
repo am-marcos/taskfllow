@@ -1,0 +1,17 @@
+{
+  "name": "taskflow-functions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TaskFlow Azure Functions (Phase 4-5)",
+  "main": "index.js",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "start": "func start"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "resend": "^4.0.0"
+  }
+}

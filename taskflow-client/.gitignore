@@ -1,0 +1,21 @@
+# Dépendances
+node_modules/
+
+# Secrets — JAMAIS commit
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Azure Functions (quand on y sera)
+local.settings.json
+bin/
+obj/

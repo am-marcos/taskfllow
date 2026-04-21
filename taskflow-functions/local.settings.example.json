@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "SUPABASE_URL": "https://xxxxx.supabase.co",
+    "SUPABASE_PUBLISHABLE_KEY": "sb_publishable_...",
+    "SUPABASE_SECRET_KEY": "sb_secret_...",
+    "RESEND_API_KEY": "re_xxxx",
+    "RESEND_FROM_EMAIL": "onboarding@resend.dev",
+    "WEBHOOK_SECRET": "7znZyHXFBAkS43YdG9sgVwb5h0iKeNxc1mWPQIrotMURJjT2"
+  }
+}

@@ -453,6 +453,30 @@ export async function getProjectTasks(projectId = PROJECT_ID) {
 
 **Résolution :** redémarrer le terminal (ou VS Code) pour recharger le PATH Windows, puis vérifier avec `az --version` avant les commandes de déploiement.
 
+🔧 **Blocage #4 — Déploiement GitHub Actions lancé au mauvais endroit**
+
+**Symptôme :** le workflow exécutait `npm` à la racine du dépôt alors que `package.json` est dans `taskflow-functions/`, ce qui provoquait `ENOENT package.json`.
+
+**Résolution :** définir `AZURE_FUNCTIONAPP_PACKAGE_PATH: './taskflow-functions'` et lancer `npm ci` dans ce sous-dossier.
+
+🔧 **Blocage #5 — Plan Azure Flex Consumption incompatible avec zipdeploy/Kudu**
+
+**Symptôme :** le run GitHub Actions affichait `Package deployment using ZIP Deploy initiated` puis `404 Not Found` sur Kudu.
+
+**Résolution :** conserver la Function App en Flex Consumption, mais adapter le workflow pour lui passer `sku: flexconsumption` afin que `Azure/functions-action@v1` bascule sur le mode `one deploy` pris en charge par ce plan.
+
+🔧 **Blocage #6 — Credentials SCM non pris en compte proprement**
+
+**Symptôme :** le workflow a d'abord échoué avec `No credentials found`, puis avec `401 Unauthorized` sur Kudu quand le publish profile était utilisé.
+
+**Résolution :** régénérer le publish profile, le stocker dans le secret GitHub `AZURE_FUNCTIONAPP_PUBLISH_PROFILE`, activer les credentials de publication SCM dans Azure, puis relancer le workflow.
+
+🔧 **Blocage #7 — Run lent et bruit de logs**
+
+**Symptôme :** les premiers runs prennent plusieurs minutes et répètent des warnings d'attente de propagation des app settings.
+
+**Résolution :** ne pas se fier uniquement aux captures du portail ; noter les erreurs exactes du job, corriger le workflow, puis relancer seulement après chaque changement utile.
+
 ### Commande / code clé
 
 ```bash
@@ -475,10 +499,7 @@ az functionapp create \
 
 ### Captures d'écran
 
-- 📸 `screenshots/phase4-function-app-portal.png` — Portail Azure → Function App `fn-taskflow`.
-- 📸 `screenshots/phase4-webhook-supabase.png` — Supabase → Database → Webhooks avec la config.
-- 📸 `screenshots/phase4-email-recu.png` — Boîte de réception avec l'email de notification.
-- 📸 `screenshots/phase4-resend-dashboard.png` — Resend Dashboard montrant l'envoi.
+Captures optionnelles. Si une capture n'apporte rien ou n'a pas été prise, ne pas créer de fichier vide juste pour remplir le journal.
 
 ---
 

@@ -8,7 +8,8 @@
     "test:rls": "node test-rls.js",
     "phase3:alice": "node alice-watch.js",
     "phase3:bob": "node bob-actions.js",
-    "test:phase5": "node test-phase5.js"
+    "test:phase5": "node test-phase5.js",
+    "phase6": "node integration.js"
   },
   "keywords": [
     "supabase",
